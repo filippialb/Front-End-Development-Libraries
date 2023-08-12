@@ -115,22 +115,15 @@ const watchList = [
 function getRating(watchList) {
   // Only change code below this line
 
+let onlyNolan = watchList.filter((director) => director["Director"] == "Christopher Nolan");
 
-let crisMovies = watchList.filter((a) => {
-  return a.Director == "Christopher Nolan";
-});
+const sum = onlyNolan.reduce((sum, direc) => sum + direc.imdbRating*1, 0);
 
-//console.log(crisMovies);
+  let averageRating = sum / onlyNolan.length;
 
-const ratings = crisMovies.map((a) => a.imdbRating);
-console.log(ratings);
-let ratingsFloat = ratings.map((a) => a*1);
 
-var averageRating = ratingsFloat.reduce((acc, curr) => acc += +parseFloat(+curr*1/1-0));
-var averageRating = averageRating/ratings.length;
   // Only change code above this line
   return averageRating;
 }
 
 console.log(getRating(watchList));
-
