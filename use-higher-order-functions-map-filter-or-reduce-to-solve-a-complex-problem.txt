@@ -1,0 +1,18 @@
+const squareList = arr => {
+  // Only change code below this line
+  
+  let positive = arr.filter((num) => num >= 0);
+  let integers = positive.filter((num) => Number.isInteger(num));
+let squares = integers.map((num) => Math.pow(num, 2));
+
+  let sum = squares.reduce((acc, curr) => acc += curr);
+  console.log(sum)
+  return squares;  
+  
+  
+  return arr;
+  // Only change code above this line
+};
+
+const squaredIntegers = squareList([-3, 4.8, 5, 3, -3.2]);
+console.log(squaredIntegers);
