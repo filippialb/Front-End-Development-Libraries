@@ -1,0 +1,39 @@
+function convertToRoman(num) {
+
+    let arabic = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+    let wholeTable = {1000: "M", 900: "CM", 500:"D", 400: "CD", 100: "C",90: "XC", 50: "L", 40: "XL", 10: "X", 9: "IX", 5: "V", 4: "IV", 1: "I"};
+    //console.log(wholeTable[400]);
+    let ans = ""
+    let mult = Math.floor(num/10);
+    //console.log(wholeTable[10]);
+    
+    let arabicDiv = arabic.slice();
+    for (let i = 0; i < arabicDiv.length; i++){
+      arabicDiv[i] = arabicDiv[i] / num;
+    }
+      let mark = 0;
+    for(let i=0; i < arabicDiv.length;i++){
+      if (arabicDiv[i] <= 1 && arabicDiv[i] > mark){
+        mark = arabicDiv[i]
+      }
+    };
+    //console.log(arabicDiv.indexOf(mark))
+    let roman = wholeTable[arabic[arabicDiv.indexOf(mark)]];
+    console.log(roman)
+    
+    /* for (let i=0; i<arabic.length; i++){
+      if (num/arabic[i] < 0){
+        
+      }else{
+        let firstRoman = Math.floor(num/arabic[i]);
+        ans += arabic[i];
+        num -= Math.floor(num/arabic[i]);
+        convertToRoman(num); 
+      }
+    }*/
+    
+     
+     return num;
+    }
+    
+    convertToRoman(36);
