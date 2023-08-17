@@ -1,0 +1,26 @@
+function rot13(str) {
+  let alphabetLower = "abcdefghijklmnopqrstuvwxyz";
+  let alphabet = alphabetLower.toUpperCase();
+  
+let ans = "";
+for (let i=0; i < str.length; i++){
+    let presentLetter = str[i];
+      if(alphabet.indexOf(presentLetter) != -1){
+          let position = alphabet.indexOf(str[i]);
+          let newPosition = position + 13;
+          if (newPosition > 25){
+            newPosition -= 26;
+          };
+      ans += alphabet[newPosition];
+      } else if(presentLetter == " ") {
+        ans += " ";
+      } else {
+        ans += presentLetter;
+      };
+};
+
+  console.log(ans)
+  return ans;
+}
+
+rot13("SERR PBQR PNZC");
