@@ -1,30 +1,51 @@
 function checkCashRegister(price, cash, cid) {
-  //console.log(cid);
-  let coinsValues = [[0.01],[0.05],[0.1],[0.25],[1],[5],[10],[20],[100]];
-  let coinsQuant = [];
-  for (let i=0; i < coinsValues.length; i++){
-    coinsQuant.push(cid[i][1] / coinsValues[i]);
-  };
-  let cashBack = cash - price;
-  let change = [["PENNY", 0], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]];
+let coinsValues = [[0.01],[0.05],[0.1],[0.25],[1],[5],[10],[20],[100]];
+let totalCID = cid.reduce((acc, curr) => acc+=curr[1],0);
+let cashBack = cash - price;
+let change = [["PENNY", 0], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]];
 
-do{
-let mark = 0;
-  for(let i=0; i<coinsValues.length; i++){
-    if(coinsValues[i] <= cashBack && i >= mark && change[mark][1] < cid[mark][1]){
-      mark = i;
-    }else{
-      //pass
-    };  };
 
-change[mark][1] += coinsValues[mark]*1;
-//console.log(change);
-cashBack -= coinsValues[mark];
-} while (cashBack > 0);
+function checker() {
+    do{
+    let mark = 0;
+      for(let i=0; i<coinsValues.length; i++){
+        if(coinsValues[i] <= cashBack && i >= mark && change[i][1] < cid[i][1]){
+          mark = i;
+        }else{
+          //pass
+        };  };
+    change[mark][1] += coinsValues[mark]*1;
+    cashBack -= coinsValues[mark];
+    } while (cashBack > 0);
+    return change;
+    };
 
-console.log(change, "here")
+function fundsChecker(){
+checker();
+let fundsChecker = [];
+for (let i=0; i<cid.length; i++){
+  if (change[i][1] <= cid[i][1]){
+  }else{
+    fundsChecker.push("1");
+  }
+};
+return fundsChecker.length;
+};
 
-  return change;
+if(totalCID > (cash - price) && fundsChecker() == 0){
+  let ans = {"status": "OPEN", "change":checker()};
+  console.log(ans);
+} else if (totalCID == (cash - price) && fundsChecker() == 0){
+  let ans = {"status": "CLOSED", "change":checker()};
+  console.log(ans);
+} else {
+  let ans = {"status": "INSUFFICIENT_FUNDS", "change":[]};
+  console.log(ans);
 }
 
+
+  return change;
+};
+
 checkCashRegister(3.26, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]);
+
