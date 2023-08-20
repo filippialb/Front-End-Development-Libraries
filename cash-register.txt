@@ -1,0 +1,68 @@
+function checkCashRegister(price, cash, cid) {
+let coinsValues = [1,5,10,25,100,500,1000,2000,10000];
+price = (price*100).toFixed();
+cash = (cash*100).toFixed();
+let fundsChecker = [];
+
+for(let i=0; i<cid.length; i++){
+  cid[i][1] = (cid[i][1]*100).toFixed()*1;
+};
+let totalCID = cid.reduce((acc, curr) => acc+=curr[1],0);
+let cashBack = cash - price;
+let change = [["PENNY", 0], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]];
+
+
+
+
+
+    do{
+    let mark = 0;
+      for(let i=0; i<coinsValues.length; i++){
+        if(coinsValues[i] <= cashBack && i >= mark && change[i][1] < cid[i][1]){
+          mark = i;
+        }else{
+          //pass
+        };  
+        };
+    change[mark][1] += coinsValues[mark]*1;
+    cashBack -= coinsValues[mark];
+    } while (cashBack > 0);
+
+
+  let changeFormated = change.slice();
+
+for (let i=0; i<cid.length; i++){
+  if (changeFormated[i][1] <= cid[i][1]){
+  }else{
+    fundsChecker.push("1");
+  }
+};
+
+  changeFormated = change.filter((x) => x[1]!=0).reverse();
+  for(let i=0; i<changeFormated.length; i++){
+    changeFormated[i][1] = changeFormated[i][1]/100
+  };
+  for(let i=0; i<cid.length; i++){
+    cid[i][1] = cid[i][1]/100
+  };
+
+
+if(totalCID > (cash - price) && fundsChecker.length == 0){
+  let ans = {"status": "OPEN", "change":changeFormated};
+  console.log(ans);
+  return ans;
+} else if (totalCID == (cash - price) && fundsChecker.length == 0){
+  let ans = {"status": "CLOSED", "change":cid};
+  console.log(ans);
+  return ans;
+} else {
+  let ans = {"status": "INSUFFICIENT_FUNDS", "change":[]};
+  console.log(ans);
+  return ans;
+}
+
+}; 
+
+checkCashRegister(19.5, 20, [["PENNY", 0.5], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]);
+
+
