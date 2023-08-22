@@ -1,0 +1,18 @@
+function pairElement(str) {
+  let ans = [];
+  for (let i = 0; i < str.length; i++){
+    if (str[i]=="A"){
+      ans.push([str[i], "T"]);
+    } else if(str[i]=="T"){
+      ans.push([str[i], "A"]);
+  }else if(str[i]=="C"){
+      ans.push([str[i], "G"]);
+  }else if(str[i]=="G"){
+      ans.push([str[i],"C"]);
+  };
+}
+  console.log(ans);
+  return ans;
+};
+
+pairElement("GCG");
