@@ -1,0 +1,23 @@
+function sumPrimes(num) {
+let primes = [];
+
+do {
+let checker = 0;
+let numHalf = Math.floor(num / 2);
+let count = numHalf;
+  do{
+      checker = num % count;
+      count--;
+  } while (checker != 0);
+  if (count === 0){
+    primes.push(num)
+  } else {
+    primes.push(0);
+  };
+  num--
+} while (num != 1)
+let sum = primes.reduce((acc, curr) => acc += curr);
+return sum;
+}
+
+sumPrimes(977);
