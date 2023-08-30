@@ -1,0 +1,21 @@
+function destroyer(arr) {
+  let targets = [];
+  for (let i=1;i<arguments.length;i++){
+    targets.push(arguments[i])
+  };
+  
+  for (let j=0; j<targets.length; j++){
+    console.log(j)
+  do{
+  //if(arguments[0].indexOf(targets[j]) > 0){
+    arguments[0].splice(arguments[0].indexOf(targets[j]), 1);
+    
+ // }
+  } while (arguments[0].indexOf(targets[j]) > -1)
+  };
+
+  console.log(arr)
+  return arr;
+}
+
+destroyer([2, 3, 2, 3], 2, 3);
