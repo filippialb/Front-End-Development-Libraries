@@ -1,0 +1,21 @@
+function smallestCommons(arr) {
+  arr.sort((a, b) => a - b);
+for(let i=1; i <= (arr[1]-arr[0]-1); i++){
+  arr.push(arr[1]-i);
+};
+arr.sort((a, b) => a - b);
+  let mmc = arr[arr.length-1]+1;
+  let sum = 1;
+do{
+  sum = 0;
+  mmc++;
+  let ans = [];
+  for (let i=0; i < arr.length; i++){
+    ans.push(mmc % arr[i]);
+  };
+  sum = ans.reduce((a,b) => a += b);
+} while (sum != 0);
+  return mmc;
+}
+
+smallestCommons([2,10]);
