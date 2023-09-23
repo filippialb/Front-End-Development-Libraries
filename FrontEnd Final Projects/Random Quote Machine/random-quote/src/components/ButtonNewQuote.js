@@ -19,16 +19,17 @@ function ButtonNewQuote() {
 
   // Function to generate and set a random number
   const generateRandomNumber = () => {
-    const newRandomNumber = quotes[Math.floor(Math.random() * quotes.length)]; // Change the range as needed
+    var newRandomNumber = quotes[Math.floor(Math.random() * quotes.length)]; // Change the range as needed
     setRandomNumber(newRandomNumber);
   };
 
   return (
     <div>
-      <button onClick={generateRandomNumber}>Generate Random Number</button>
+      
       {randomNumber !== null && (
         <p>Random Number: {randomNumber}</p>
       )}
+      <button onClick={generateRandomNumber}>Generate Random Number</button>
     </div>
   );
 }
