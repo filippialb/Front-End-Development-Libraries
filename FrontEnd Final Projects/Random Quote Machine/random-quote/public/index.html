@@ -7,9 +7,20 @@
     <link rel="stylesheet" href="App.css">
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> -->
     <title>Random Quote Machine</title>
+    <style>
+      body {
+        color: #333;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 400;
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+        transition: background-color 500ms linear;
+      }
+    </style>
   </head>
 
-  <body>
+  <body id="body">
   
   <div id="wrapper">
     <div id="quote-box">
@@ -24,6 +35,23 @@
       </div>
       <div class="quote-author"> "-"
       
+      
+        <script>
+          const divElem = document.getElementById("body");
+          function randomcolor() {
+              return Math.floor(Math.random() * 255);
+          }
+          divElem.addEventListener('click', () => {
+              divElem.style.backgroundColor = 'rgba('
+                  + randomcolor() + ',' + randomcolor()
+                  + ',' + randomcolor() + '\)'
+
+          })
+      </script>
+
+
+
+
       </div>
       <div class="buttons">
         <a class="button" id="tweet-quote" title="Tweet this quote!" href="https://twitter.com/intent/tweet?hashtags=quotes&amp;related=freecodecamp&amp;text=%22There%20are%20no%20traffic%20jams%20along%20the%20extra%20mile.%22%20Roger%20Staubach" >
