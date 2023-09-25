@@ -10,48 +10,35 @@ const quotes = [
 ]
 
 
+    function ButtonNewQuote() {
+    // State to store the generated random number
+    const [randomNumber, setRandomNumber] = useState(null);
+
+    // Function to generate and set a random number
+    const generateRandomNumber = () => {
+        var newRandomNumber = quotes[Math.floor(Math.random() * quotes.length)]; // Change the range as needed
+        setRandomNumber(newRandomNumber);
+
+        
+    };
+
+    //--
 
 
 
 
 
 
+    return (
+        <div>
+        
+        {randomNumber !== null && (
+            <p>Random Number: {randomNumber}</p>
+        )}
+        <button onClick={generateRandomNumber}>New Quote</button>
+        </div>
+    );
+    }
 
-
-
-
-
-
-function ButtonNewQuote() {
-  // State to store the generated random number
-  const [randomNumber, setRandomNumber] = useState(null);
-
-  // Function to generate and set a random number
-  const generateRandomNumber = () => {
-    var newRandomNumber = quotes[Math.floor(Math.random() * quotes.length)]; // Change the range as needed
-    setRandomNumber(newRandomNumber);
-
-    
-  };
-
-
-
-//--
-
-
-
-
-
-
-  return (
-    <div>
-      
-      {randomNumber !== null && (
-        <p>Random Number: {randomNumber}</p>
-      )}
-      <button onClick={generateRandomNumber}>New Quote</button>
-    </div>
-  );
-}
 
 export default ButtonNewQuote;
