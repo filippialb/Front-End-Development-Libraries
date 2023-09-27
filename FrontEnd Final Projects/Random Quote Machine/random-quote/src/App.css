@@ -46,13 +46,13 @@ div {
   text-align: right;
 }
 
-#quote-box .buttons {
+.buttons {
   width: 450px;
   margin: auto;
   display: block;
 }
 
-#quote-box .buttons .button {
+.button {
   height: 38px;
   border: none;
   border-radius: 3px;

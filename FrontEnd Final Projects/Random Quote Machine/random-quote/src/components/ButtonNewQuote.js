@@ -22,6 +22,8 @@ class ButtonNewQuoteClass extends Component {
         + ',' + Math.floor(Math.random() * 255) + '\)'   
   };
 
+  
+
   componentDidMount() {
     this.generateRandomNumber();
   }
@@ -38,7 +40,7 @@ class ButtonNewQuoteClass extends Component {
             <p>- {randomNumber[1]}</p>
           </div>
         )}
-        <button onClick={this.generateRandomNumber}>New Quote</button>
+        <button onClick={this.generateRandomNumber} class="button">New Quote</button>
       </div>
     );
   }
